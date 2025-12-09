@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+<body>
+
+<section class="calculator">
+    <div class="calculator__screen">
+        <div class="calculator__screen-input" id="inputEl">0</div>
+        <div class="calculator__keys">
+
+            <!-- Row 1 -->
+            <div class="calculator__btn calculator__btn--top" data-type="delete" >
+                <img src="images/delete.png" alt="delete" style="color: white">
+            </div>
+
+            <div class="calculator__btn calculator__btn--top" data-type="clear">AC</div>
+
+            <div class="calculator__btn calculator__btn--top" data-type="operator" data-value="%" onclick="addToScreen('%')">
+                <img src="images/discount.png" alt="percent">
+            </div>
+
+            <div class="calculator__btn calculator__btn--orange" data-type="operator" data-value="/" onclick="addToScreen('/')">
+                <img src="images/division-symbol.png" alt="divide">
+            </div>
+
+            <!-- Row 2 -->
+            <div class="calculator__btn" data-type="number" data-value="7" onclick="addToScreen('7')">7</div>
+            <div class="calculator__btn" data-type="number" data-value="8" onclick="addToScreen('8')">8</div>
+            <div class="calculator__btn" data-type="number" data-value="9" onclick="addToScreen('9')">9</div>
+
+            <div class="calculator__btn calculator__btn--orange" data-type="operator" data-value="*" onclick="addToScreen('*')">
+                <img src="images/multiply.png" alt="multiply">
+            </div>
+
+            <!-- Row 3 -->
+            <div class="calculator__btn" data-type="number" data-value="4" onclick="addToScreen('4')">4</div>
+            <div class="calculator__btn" data-type="number" data-value="5" onclick="addToScreen('5')">5</div>
+            <div class="calculator__btn" data-type="number" data-value="6" onclick="addToScreen('6')">6</div>
+
+            <div class="calculator__btn calculator__btn--orange" data-type="operator" data-value="-" onclick="addToScreen('-')">
+                <img src="images/minus-sign.png" alt="minus">
+            </div>
+
+            <!-- Row 4 -->
+            <div class="calculator__btn" data-type="number" data-value="1" onclick="addToScreen('1')">1</div>
+            <div class="calculator__btn" data-type="number" data-value="2" onclick="addToScreen('2')">2</div>
+            <div class="calculator__btn" data-type="number" data-value="3" onclick="addToScreen('3')">3</div>
+
+            <div class="calculator__btn calculator__btn--orange" data-type="operator" data-value="+" onclick="addToScreen('+')">
+                <img src="images/plus.png" alt="plus">
+            </div>
+
+            <!-- Row 5 -->
+            <div class="calculator__btn" data-type="sign" data-value="sign">+/-</div>
+            <div class="calculator__btn" data-type="number" data-value="0" onclick="addToScreen('0')">0</div>
+            <div class="calculator__btn" data-type="decimal" data-value="decimal" >.</div>
+
+            <div class="calculator__btn calculator__btn--orange" data-type="equals" onclick="addToScreen('=')">
+                <img src="images/equal.png" alt="equal">
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<script src="index.js"></script>
+</body>
+</html>
