@@ -126,9 +126,4 @@ function handleKey(type, value) {
 }
 
 
-// override functions+
-//touch effect UI ?
-//0 case clean when type another inputs +
-//+- case +
-//AC -C +
-//decimal case +
+
