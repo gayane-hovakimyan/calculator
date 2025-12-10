@@ -38,8 +38,15 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 18px;
+    font-size: 22px;
     background-color: #3c3b3b;
+    cursor: pointer;
+
+}
+
+.calculator__btn:hover{
+    background-color: #504e4e;
+
 }
 .calculator__btn--top{
     background-color: #6e6c6c;
@@ -47,4 +54,7 @@
 }
 .calculator__btn--orange{
     background-color: #c88104;
+}
+.calculator__btn--orange:hover{
+    background-color: #e0951a;
 }

@@ -15,10 +15,10 @@
 
             <!-- Row 1 -->
             <div class="calculator__btn calculator__btn--top" data-type="delete" >
-                <img src="images/delete.png" alt="delete" style="color: white">
+                <img src="images/delete.png" alt="delete" style="width: 22px;">
             </div>
 
-            <div class="calculator__btn calculator__btn--top" data-type="clear">AC</div>
+            <div class="calculator__btn calculator__btn--top" id="clearBtn" data-type="clear">AC</div>
 
             <div class="calculator__btn calculator__btn--top" data-type="operator" data-value="%" onclick="addToScreen('%')">
                 <img src="images/discount.png" alt="percent">
@@ -34,7 +34,7 @@
             <div class="calculator__btn" data-type="number" data-value="9" onclick="addToScreen('9')">9</div>
 
             <div class="calculator__btn calculator__btn--orange" data-type="operator" data-value="*" onclick="addToScreen('*')">
-                <img src="images/multiply.png" alt="multiply">
+                <img src="images/multiply.png" alt="multiply" style="width: 20px;">
             </div>
 
             <!-- Row 3 -->
@@ -58,7 +58,7 @@
             <!-- Row 5 -->
             <div class="calculator__btn" data-type="sign" data-value="sign">+/-</div>
             <div class="calculator__btn" data-type="number" data-value="0" onclick="addToScreen('0')">0</div>
-            <div class="calculator__btn" data-type="decimal" data-value="decimal" >.</div>
+            <div class="calculator__btn" data-type="decimal" data-value="." >.</div>
 
             <div class="calculator__btn calculator__btn--orange" data-type="equals" onclick="addToScreen('=')">
                 <img src="images/equal.png" alt="equal">

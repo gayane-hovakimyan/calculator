@@ -9,6 +9,7 @@ document.querySelector('.calculator__keys').addEventListener('click', (ev) => {
     const value = btn.dataset.value;
 
     handleKey(type, value);
+    updateClearButton();
 });
 
 function addToScreen() {
@@ -16,7 +17,6 @@ function addToScreen() {
 }
 
 function evaluate(expr) {
-    // Եթե expression-ը դատարկ է
     if (!expr) return "0";
 
     try {
@@ -38,6 +38,11 @@ function calculate() {
 function reset() {
     expression = "";
     addToScreen();
+    updateClearButton();
+}
+function updateClearButton() {
+    const clearBtn = document.getElementById('clearBtn');
+    clearBtn.innerText = (!expression || expression === "0") ? "AC" : "C";
 }
 
 function deleteFun() {
@@ -48,16 +53,16 @@ function deleteFun() {
 function changeSign() {
     if (!expression) return;
 
-    let match = expression.match(/(\d+\.?\d*)$/);
+    let match = expression.match(/(\(?-?\d+\.?\d*\)?)$/);
     if (!match) return;
 
     let number = match[0];
     let start = expression.slice(0, -number.length);
 
-    if (number.startsWith("-")) {
-        number = number.slice(1);
-    } else {
-        number = "(" + "-" + number + ")";
+    if (number.startsWith("(-") && number.endsWith(")")) {
+        number = number.slice(2,-1);
+    }  else {
+        number = `(-${number})`;
     }
 
     expression = start + number;
@@ -65,22 +70,65 @@ function changeSign() {
 }
 
 function handleKey(type, value) {
-    if (type === "number" || type === "decimal") {
+    if (type === "number") {
+        if (value === "0" && expression === "") return;
+
+        const parts = expression.split(/[\+\-\*\/%]/);
+        const lastNumber = parts.at(-1);
+
+        if (lastNumber === "0") return;
+
         expression += value;
-        addToScreen();
-    } else if (type === "operator") {
-        if (!expression) return;
+        return addToScreen();
+    }
+
+    if (type === "decimal") {
         const last = expression.at(-1);
-        if ("+-*/%".includes(last)) return;
+
+        if (!expression) {
+            expression = "0.";
+            return addToScreen();
+        }
+
+        if ("+-*/%".includes(last)) {
+            expression += "0.";
+            return addToScreen();
+        }
+
+        const parts = expression.split(/[\+\-\*\/%]/);
+        const lastNumber = parts.at(-1);
+        if (lastNumber.includes(".")) return;
+
+        expression += ".";
+        return addToScreen();
+    }
+
+    if (type === "operator") {
+        if (!expression) return;
+
+        const last = expression.at(-1);
+
+        if ("+-*/%".includes(last)) {
+            expression = expression.slice(0, -1) + value;
+            return addToScreen();
+        }
         expression += value;
-        addToScreen();
+        return addToScreen();
     } else if (type === "equals") {
-        calculate();
+        return calculate();
     } else if (type === "clear") {
-        reset();
+        return reset();
     } else if (type === "delete") {
-        deleteFun();
+        return deleteFun();
     } else if (type === "sign") {
-        changeSign();
+        return changeSign();
     }
 }
+
+
+// override functions+
+//touch effect UI ?
+//0 case clean when type another inputs +
+//+- case +
+//AC -C +
+//decimal case +
